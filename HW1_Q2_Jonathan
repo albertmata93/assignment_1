@@ -1,0 +1,117 @@
+# Question 2 
+def question_2():
+    dummy_data1= raw_input("Movie name 1:")
+    dummy_data2= raw_input("Movie name2:")
+    
+    #import movie file and copy to variable
+    import csv
+    f =open('movies.csv')
+    csv_f = csv.reader(f)
+
+
+    #dictionary to hold actors, and moview they made
+    actors = {}
+    #list to hold all moives made when printed it is a list of list of all movies very messy 
+    all_movies= []
+
+    # assign csv file to dicttionary 
+    #key is actor name list in movies they appear in 
+    for index in csv_f:
+        actors[index[0]] = index[1:] 
+        # list of list of all movie they repeat and it looks messy 
+        all_movies.append(index[1:])  
+  
+    #list to hold the names of the actors in each movie  
+    list1= []
+    list2=[]
+    #counters to keep check is the input data from the users is in our list of moives 
+    counter = 0
+    not_in_list = 0
+
+    # loop through list of movies to compare the user input to the list 
+    for i in all_movies:
+
+        if dummy_data2 in i:
+            counter += 1
+        else:
+            not_in_list += 1
+    #if counter is greater then zero movie name is in list 
+    if counter > 0:
+         #loop through the actors dictionary and find all the actors that came out in the movie
+        for i in actors:
+            x = actors[i]
+            if dummy_data2 in x:
+                #append actors name to list of actors for movie
+                list2.append(i)
+          #print to see what the list loooks like can be deleted when program finally works       
+        print list2
+    else:  
+        #else is if the movie list did not the users input
+        print "Movie " +dummy_data2 + " not in our data base"
+        raise SystemExit(0)
+    
+    #repeat process above I know it should be a fucntion but i could not figure out how to write it 
+        
+    counter = 0
+    not_in_list = 0
+    # check if user input is in our list of movies
+    for i in all_movies:
+
+        if dummy_data1 in i:
+            counter += 1
+        else:
+            not_in_list += 1
+    if counter > 0:
+         #loop through the actors dictionary and find all the actors that came out in the movie
+        for i in actors:
+            x = actors[i]
+            if dummy_data1 in x:
+                list1.append(i)
+        print list1
+    else:  
+        print "Movie " +dummy_data1 + " not in our data base"
+        raise SystemExit(0)
+        
+
+       
+   
+        
+    #list to hold the actors that appered in both moives
+    both_movies=[]
+    movie1= []
+    movie2 = []
+
+    # loop through list one and two and get all actors that appeared in both movies
+    for actor in list1:
+        if actor in list2:
+            both_movies.append(actor)
+        
+        else:
+            movie1.append(actor)
+            
+            #list1.remove(actor)
+            #list2.remove(actor)
+        
+    for actor in list2:
+        if actor not in list1:
+            movie2.append(actor)
+               
+    print "All the actors who were in both movies: " + str(both_movies)
+    print "All actors who were in " + dummy_data1 +" but not in " + dummy_data2 +" : " + str(movie1)
+    print "All actors who were in " + dummy_data2 + " but not in " + dummy_data1 + " : " + str(movie2) 
+
+    
+
+question_2()
+
+        
+        
+
+    
+
+
+
+
+
+
+                
