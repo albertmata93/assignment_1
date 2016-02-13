@@ -1,0 +1,39 @@
+
+#open file of endings
+endings_txt = open('endings.txt', 'r')
+
+#create a list of list that seperates the three parts of the ending
+#'ending word', 'rhyth', 'beats'
+endings_list =[]
+for line in endings_txt:
+    #append each line to the endings list
+    endings_list.append(line.split("::"))
+    #check what the list format looks like
+#print endings_list
+
+#repeat process for skeleton
+skeleton_txt = open('skeleton_SamuraiShowdown-2.txt', 'r')
+
+
+#create a list of list that seperates the three parts of the skeleton
+#'Prefix word', 'beats', 'ending word or XXX'
+skeleton_list = []
+for line in skeleton_txt:
+    #append each line to the skeleton_list
+    skeleton_list.append(line.split("::"))
+    #check what the list format looks like
+#print skeleton_list
+
+#variable you will need to complete rap song
+rhythm = ''
+total_beats =''
+last_word =''
+missing_beats =''
+empty_ending = 'XXX'
+
+for rhyme in skeleton_list:
+    if rhyme[2] != empty_ending:
+        print rhyme[2]
+    elif rhyme[2] == empty_ending:
+        print "HELLO"
+   
